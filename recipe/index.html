@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+</head>
+<body>
+
+    <div id="parent"></div>
+
+    <script>
+        const uimaker = () => {
+            recipes.map(res => {
+                document.getElementById("recipe").innerHTML = ""
+
+                let name = document.createElement('h2');
+                name.innerHTML = recipe.name;
+
+                let description = document.createElement('p');
+                description.innerHTML = recipe.description;
+
+                let preparationTime = document.createElement('p');
+                preparationTime.innerHTML = `Preparation Time: ${recipe.preparationTime}`;
+
+                let cookingTime = document.createElement('p');
+                cookingTime.innerHTML = `Cooking Time: ${recipe.cookingTime}`;
+
+                let country = document.createElement('p');
+                country.innerHTML = `Country: ${recipe.country}`;
+
+                let veg = document.createElement('p');
+                veg.innerHTML = `Veg: ${recipe.veg ? 'Yes' : 'No'}`;
+
+                let image = document.createElement('img');
+                image.src = recipe.imageUrl;
+
+                let div = document.createElement('div');
+                div.append(name, description, preparationTime, cookingTime, country, veg, image);
+                document.getElementById("recipe").append(div)
+
+            });
+        }
+
+        const apidatashow = () => {
+            fetch('http://localhost:8090/recipe/all')
+                .then(res => res.json())
+                .then(data => uimaker(data));
+        }
+    </script>
+</body>
+
+</html>
