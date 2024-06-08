@@ -26,7 +26,8 @@
 
     input[type="text"],
     input[type="checkbox"],
-    input[type="submit"] {
+    input[type="submit"],
+    button {
         width: 100%;
         padding: 10px;
         margin-bottom: 10px;
@@ -41,14 +42,14 @@
         vertical-align: middle;
     }
 
-    input[type="submit"] {
+    button {
         background-color: #4CAF50;
         color: white;
         cursor: pointer;
         border: none;
     }
 
-    input[type="submit"]:hover {
+    button:hover {
         background-color: #45a049;
     }
 </style>
@@ -56,25 +57,24 @@
 <body>
     <h1>Add Recipe</h1>
     <form id="recipeForm" action="/recipe/add" method="post">
-        <input placeholder="name" type="text" id="name" name="name"><br><br>
+        <input placeholder="name" type="text" name="name"><br><br>
 
-        <input placeholder="description" type="text" id="description" name="description"><br><br>
+        <input placeholder="description" type="text" name="description"><br><br>
 
-        <input placeholder="preparationTime" type="text" id="preparationTime" name="preparationTime"><br><br>
+        <input placeholder="preparationTime" type="text" name="preparationTime"><br><br>
 
-        <input placeholder="cookingTime" type="text" id="cookingTime" name="cookingTime"><br><br>
+        <input placeholder="cookingTime" type="text" name="cookingTime"><br><br>
 
-        <input placeholder="imageUrl" type="text" id="imageUrl" name="imageUrl"><br><br>
+        <input placeholder="imageUrl" type="text" name="imageUrl"><br><br>
 
-        <input placeholder="country" type="text" id="country" name="country"><br><br>
+        <input placeholder="country" type="text" name="country"><br><br>
 
         <label for="veg">veg</label>
-        <input placeholder="veg" type="checkbox" id="veg" name="veg"><br><br>
-
-        <input type="submit">
+        <input placeholder="veg" type="checkbox" name="veg"><br><br>
+        <button type="submit">Add Recipe</button>
 
     </form>
-    
+
 </body>
 
 </html>

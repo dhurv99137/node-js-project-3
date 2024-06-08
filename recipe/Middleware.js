@@ -1,4 +1,4 @@
-const datacheak = (req, res, next) => {
+const data_cheak = (req, res, next) => {
     let { name, description, preparationTime, cookingTime, imageUrl, country, veg } = req.body
 
     if (!name || !description || !preparationTime || !cookingTime || !imageUrl || !country || !veg) {
@@ -8,4 +8,4 @@ const datacheak = (req, res, next) => {
         next()
     }
 }
-module.exports = datacheak
+module.exports = data_cheak

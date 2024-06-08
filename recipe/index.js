@@ -1,5 +1,5 @@
 const express = require("express");
-const datacheak = require("./Middleware");
+const data_cheak = require("./Middleware");
 const app = express()
 
 app.use(express.json());
@@ -35,10 +35,10 @@ app.get("/add", (req, res) => {
     res.sendFile(__dirname + "/recipe.html")
 })
 
-app.post("/recipe/add", datacheak, (req, res) => {
+app.post("/recipe/add", data_cheak, (req, res) => {
     const newRecipe = {
         name: req.body.name,
-        description: req.body.description,
+        description: req.body.description,  
         preparationTime: req.body.preparationTime,
         cookingTime: req.body.cookingTime,
         imageUrl: req.body.imageUrl,

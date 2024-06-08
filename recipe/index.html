@@ -6,48 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipes</title>
 </head>
+
 <body>
 
     <div id="parent"></div>
 
-    <script>
-        const uimaker = () => {
-            recipes.map(res => {
-                document.getElementById("recipe").innerHTML = ""
 
-                let name = document.createElement('h2');
+    <script>
+        const renderData = (data) => {
+            document.getElementById("parent").innerHTML = "";
+
+            data.map((recipe) => {
+                let name = document.createElement("h2");
                 name.innerHTML = recipe.name;
 
-                let description = document.createElement('p');
+                let description = document.createElement("p");
                 description.innerHTML = recipe.description;
 
-                let preparationTime = document.createElement('p');
+                let preparationTime = document.createElement("p");
                 preparationTime.innerHTML = `Preparation Time: ${recipe.preparationTime}`;
 
-                let cookingTime = document.createElement('p');
+                let cookingTime = document.createElement("p");
                 cookingTime.innerHTML = `Cooking Time: ${recipe.cookingTime}`;
 
-                let country = document.createElement('p');
+                let country = document.createElement("p");
                 country.innerHTML = `Country: ${recipe.country}`;
 
-                let veg = document.createElement('p');
+                let veg = document.createElement("p");
                 veg.innerHTML = `Veg: ${recipe.veg ? 'Yes' : 'No'}`;
 
-                let image = document.createElement('img');
+                let image = document.createElement("img");
                 image.src = recipe.imageUrl;
+                image.style.width = '200px';
+                image.style.height = 'auto'; 
 
-                let div = document.createElement('div');
+                let div = document.createElement("div");
+                div.classList.add("recipe");  
                 div.append(name, description, preparationTime, cookingTime, country, veg, image);
-                document.getElementById("recipe").append(div)
-
+                document.getElementById("parent").append(div);
             });
-        }
+        };
 
         const apidatashow = () => {
             fetch('http://localhost:8090/recipe/all')
                 .then(res => res.json())
-                .then(data => uimaker(data));
-        }
+                .then(data => renderData(data))
+                .catch(error => console.error('Error fetching recipes:', error));
+        };
+
+        apidatashow();
+
     </script>
 </body>
 
